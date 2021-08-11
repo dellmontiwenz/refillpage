@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<% include ../partials/head-stock.ejs  %>
+</head>
+<body class="App-main-box">
+	<%
+  	let rowslot = 0;
+	  let totalrows = 0;
+	%>
+	<% if (slotinfo.length > 0) { %>
+	<div class="row row-cols-2 d-flex flex-wrap mb-3">
+		<% Object.keys(slotinfo).forEach(function(key) { %>
+		<%
+		     if ( ((slotinfo[key].slot >= 1) && (slotinfo[key].slot <= 10)) || ((slotinfo[key].slot >= 101) && (slotinfo[key].slot <= 110))  ) {
+					 rowslot = 1;
+				 } else if ( ((slotinfo[key].slot >= 11) && (slotinfo[key].slot <= 20)) || ((slotinfo[key].slot >= 111) && (slotinfo[key].slot <= 120)) ) {
+					 rowslot = 2;
+				 } else if ( ((slotinfo[key].slot >= 21) && (slotinfo[key].slot <= 30)) || ((slotinfo[key].slot >= 121) && (slotinfo[key].slot <= 130)) ) {
+					 rowslot = 3;
+				 } else if ( ((slotinfo[key].slot >= 31) && (slotinfo[key].slot <= 40)) || ((slotinfo[key].slot >= 131) && (slotinfo[key].slot <= 140)) ) {
+					 rowslot = 4;
+				 } else if ( ((slotinfo[key].slot >= 41) && (slotinfo[key].slot <= 50)) || ((slotinfo[key].slot >= 141) && (slotinfo[key].slot <= 150)) ) {
+					 rowslot = 5;
+				 } else if ( ((slotinfo[key].slot >= 51) && (slotinfo[key].slot <= 60)) || ((slotinfo[key].slot >= 151) && (slotinfo[key].slot <= 160)) ) {
+					 rowslot = 6;
+				 }
+				 if (rowslot > totalrows) {
+					 totalrows = rowslot;
+				 }
+		%>
+		<div class="col flex-even slot-set rowslot<%= rowslot %>">
+			<div class="card bg-light mb-5">
+			  <div class="card-header p-1">
+					<div class="row font-weight-bold text-uppercase text-center">
+						<div class="p-0 col-4 h1 mb-0">Slot</div>
+						<div class="p-0 col-8 h1 mb-0">Stock</div>
+					</div>
+					<div class="row font-weight-bold text-center px-3">
+						<div class="p-0 col-4 display-4"><%= slotinfo[key].slot %></div>
+						<div id="slot<%= slotinfo[key].slot %>" class="p-0 col-8 display-4 bg-warning" data-stock="<%= slotinfo[key].stock %>" data-max="<%= slotinfo[key].capacity %>"><%= slotinfo[key].stock %>&nbsp;/&nbsp;<%= slotinfo[key].capacity %></div>
+					</div>
+				</div>
+			  <div class="card-body p-0">
+					<div class="d-flex">
+						<div class="p-1 flex-even"><button data-slot="<%= slotinfo[key].slot %>" data-num="1" class="btn-lg btn-block btn-success">+</button></div>
+						<div class="p-1 flex-even"><button data-slot="<%= slotinfo[key].slot %>" data-num="-1" class="btn-lg btn-block btn-danger">-</button></div>
+					</div>
+					<div class="d-flex">
+						<div class="p-1 flex-even"><button data-slot="<%= slotinfo[key].slot %>" data-num="1000" class="btn-lg btn-block btn-primary">Full</button></div>
+						<div class="p-1 flex-even"><button data-slot="<%= slotinfo[key].slot %>" data-num= "0" class="btn-lg btn-block btn-secondary">Zero</button></div>
+					</div>
+			  </div>
+			</div>
+		</div>
+		<% }); %>
+	</div>
+	<% } %>
+	<% if (totalrows > 0) { %>
+	<div class="d-flex btn-loc">
+		<% for (let i = 1; i <= totalrows; i++) { %>
+		<div class="p-2 flex-fill center"><a href="javascript:;" data-row="<%= i %>" class="rowshow btn btn-row">R<%= i %></a></div>
+		<% } %>
+	</div>
+	<% } %>
+	<div class="container center btn-confirm-can-log">
+		<a href="javascript:;" class="btn btn-confirm">Confirm</a>
+		<a href="/" class="btn btn-back">Cancel</a>
+  	</div>
+	<!--<div class="comp-logo"><img src="/images/logo.png" /></div> -->
+	<% include ../partials/footer.ejs  %>
+</body>
+</html>

@@ -1,0 +1,49 @@
+.flex-even {
+  flex: 1 0 49%;
+}
+.btn {
+  padding: 15px 42px !important;
+}
+.btn-row {
+  border: 2px solid #133421 !important;
+  background-color: #FFF !important;
+  color: #133421 !important;
+}
+.btn-row.focus {
+  border: 2px solid #FFF !important;
+  background-color: #133421 !important;
+  color: #FFF !important;
+}
+.btn-lg {
+  padding: 8px;
+  font-size: 30px;
+}
+.mb-5, .my-5 {
+  margin-bottom: 2rem!important;
+}
+
+.btn-loc {
+  left: 50px;
+  bottom: 150px;
+  position: absolute;
+}
+
+.btn-confirm-can-log {
+  left: 5%;
+  bottom: 50px;
+  position: absolute;
+}
+.comp-logo {
+  left: 35%;
+  bottom: 300px;
+  position: absolute;
+}
+
+.App-main-box {
+  height: 100%;
+  padding: 0px 15px;
+  background-color: #54c1ef;
+  background-image: url("../images/logo.png");
+  background-position: 50% 85%;
+  background-repeat: no-repeat;
+}

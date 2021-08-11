@@ -1,0 +1,16 @@
+{
+  "apps": [
+    {
+      "name": "refill-page",
+      "script": "app.js",
+      "exec_interpreter": "/Users/adrianli/.nvm/versions/node/v6.16.0/bin/node",
+      "time": true,
+      "watch": true,
+      "ignore_watch": [
+        "node_modules",
+        ".git",
+        "logs"
+      ]
+    }
+  ]
+}
